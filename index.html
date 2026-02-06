@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VAGUE | Word Imposter Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Main Menu -->
+        <section id="menu-screen" class="screen active">
+            <h1>VAGUE</h1>
+            <p class="subtitle">Word Game</p>
+
+            <div class="menu-options">
+                <button class="btn btn-primary" id="start-new-game">New Game</button>
+                <button class="btn" id="multiplayer-btn">Multiplayer</button>
+                <button class="btn" id="settings-btn">Settings</button>
+            </div>
+        </section>
+
+        <!-- Game Setup -->
+        <section id="setup-screen" class="screen">
+            <h2>SETUP GAME</h2>
+
+            <div class="input-group">
+                <label>Add Player</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="player-input" placeholder="Enter name...">
+                    <button class="btn btn-primary" id="add-player-btn" style="padding: 0.5rem 1rem;">+</button>
+                </div>
+            </div>
+
+            <div class="player-list" id="player-list">
+                <!-- Players will be added here -->
+            </div>
+
+            <div class="input-group">
+                <label>Category</label>
+                <select id="category-select">
+                    <option value="household">Household Items</option>
+                    <option value="movies">Movies</option>
+                    <option value="celebrities">Celebrities</option>
+                    <option value="anime">Anime</option>
+                    <option value="food">Food & Drink</option>
+                </select>
+            </div>
+
+
+
+            <button class="btn btn-primary" id="begin-game-btn" style="margin-top: auto;">Begin Mission</button>
+            <button class="btn btn-secondary back-to-menu" style="margin-top: 1rem;">Back</button>
+        </section>
+
+        <!-- Reveal Sequence (Pass & Play) -->
+        <section id="reveal-screen" class="screen">
+            <h2 id="round-display">ROUND 1</h2>
+
+            <div class="reveal-content">
+                <div class="player-name-display" id="current-player-name">PLAYER 1</div>
+
+                <div class="role-reveal-box" id="reveal-box">
+                    <div id="tap-instruction" class="tap-to-reveal">TAP TO REVEAL ROLE</div>
+                    <div id="role-info" style="display: none;">
+                        <p class="reveal-text" id="role-type">YOU ARE A CIVILIAN</p>
+                        <p class="hidden-word" id="secret-word">PAN</p>
+                        <p class="hint-text" id="imposter-hint" style="display: none;">HINT: FRY</p>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="next-player-btn" style="display: none; width: 100%;">Next
+                    Player</button>
+            </div>
+        </section>
+
+        <!-- Discussion / Action Screen -->
+        <section id="discussion-screen" class="screen">
+            <h2 id="phase-title">CLUE PHASE</h2>
+
+            <div class="reveal-content">
+                <p id="discussion-instruction"
+                    style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem; font-weight: 700; text-transform: uppercase;">
+                    PLAYER NAME</p>
+                <p id="phase-subtitle" style="color: var(--text-dim); margin-bottom: 2rem;">IS GIVING A CLUE...</p>
+
+                <!-- Timer Component -->
+                <div class="timer-container">
+                    <div id="timer-display" class="timer-display">00:00</div>
+                    <div class="timer-controls">
+                        <button class="timer-btn" id="timer-toggle-btn">START</button>
+                        <button class="timer-btn" id="timer-reset-btn">RESET</button>
+                    </div>
+                </div>
+
+                <div class="discussion-actions"
+                    style="width: 100%; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+                    <button class="btn btn-primary" id="clue-next-btn" style="width: 100%;">Next Player</button>
+
+                    <div id="post-discussion-options"
+                        style="display: none; flex-direction: column; gap: 1rem; width: 100%;">
+                        <button class="btn btn-secondary" id="next-round-btn">Next Round (Same Word)</button>
+                        <button class="btn btn-primary" id="finish-mission-btn">Finish Mission</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Over / Results -->
+        <section id="results-screen" class="screen">
+            <h1 style="font-size: 2.5rem;">MISSION OVER</h1>
+            <div class="reveal-content">
+                <p id="final-results-text" style="margin-bottom: 2rem;">Mission Complete.</p>
+                <button class="btn btn-primary" id="restart-game-btn" style="width: 100%;">Play Again</button>
+                <button class="btn btn-secondary back-to-menu" style="margin-top: 1rem; width: 100%;">Main Menu</button>
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
